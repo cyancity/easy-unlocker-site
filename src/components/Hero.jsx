@@ -53,6 +53,8 @@ export default function Hero() {
   return (
     <div ref={containerRef} className="relative h-[380vh] w-full" data-od-id="hero-scrolly">
       <div className="hero-glow pointer-events-none absolute inset-0 z-0" />
+      {/* 导航「交互实测」锚点：落在 scrolly 行程中点，即模拟器完全展开处（同 triggerDemo） */}
+      <div id="demo-anchor" className="absolute left-0 w-full" style={{ top: 'calc((100% - 100vh) * 0.5)' }} />
 
       <div className="sticky top-0 flex h-dvh min-h-[560px] w-full flex-col items-center justify-center overflow-hidden px-4 pb-2 pt-22 sm:pt-25 md:px-8 lg:h-screen lg:min-h-[700px] lg:pb-4 lg:pt-32">
         <div className="relative mx-auto flex h-full w-full max-w-7xl flex-col justify-center">
@@ -128,9 +130,9 @@ export default function Hero() {
 
               {/* 动作行：安装命令 pill + 主 CTA + GitHub 次级入口 */}
               <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-2.5">
-                <div className="flex w-full min-w-0 items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] py-1.5 pl-4 pr-1.5 font-mono text-xs text-neutral-200 backdrop-blur-md min-[420px]:w-auto min-[420px]:flex-1 sm:w-[420px] sm:flex-none">
+                <div className="flex w-full min-w-0 items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] py-1.5 pl-4 pr-1.5 font-mono text-xs text-neutral-200 backdrop-blur-md min-[420px]:w-auto min-[420px]:flex-1 sm:flex-none">
                   <span className="select-none font-bold text-approve">$</span>
-                  <span className="truncate">{INSTALL_CMD}</span>
+                  <span className="overflow-x-auto whitespace-nowrap">{INSTALL_CMD}</span>
                   <button
                     type="button"
                     onClick={() => copy(INSTALL_CMD)}

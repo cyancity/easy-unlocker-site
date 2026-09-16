@@ -14,7 +14,6 @@ export default function App() {
       <Nav />
       <main id="main-content">
         <Hero />
-        <div id="demo-anchor" className="relative -top-20" />
         <Agents />
         <Principles />
         <Architecture />
