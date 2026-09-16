@@ -13,7 +13,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && wrangler pages deploy dist --project-name easy-unlocker-site"
+    "deploy": "npm run build && wrangler pages deploy dist --project-name easy-unlocker"
   },
   "dependencies": {
     "react": "^18.3.1",

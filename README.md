@@ -44,7 +44,7 @@ npm run preview  # 本地预览 dist/
 
 ```bash
 npm run build
-npx wrangler pages deploy dist --project-name easy-unlocker-site
+npx wrangler pages deploy dist --project-name easy-unlocker
 ```
 
 ## 关于内容
