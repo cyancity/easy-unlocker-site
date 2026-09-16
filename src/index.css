@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+/* Apple Design System tokens — 明暗章节节奏 + 单一蓝色 accent。
+   绿色 #30d158 仅作「生物批准 / 终端成功」语义色，不承担品牌 accent。 */
+@theme {
+  --color-ink: #1d1d1f;
+  --color-ink-2: #424245;
+  --color-mute: #6e6e73;
+  --color-meta: #86868b;
+  --color-line: #d2d2d7;
+  --color-line-soft: #e8e8ed;
+  --color-field: #f5f5f7;
+  --color-warm: #fbfbfd;
+  --color-accent: #0071e3;
+  --color-accent-hover: #0077ed;
+  --color-accent-active: #0066cc;
+  --color-link-dark: #2997ff;
+  --color-approve: #30d158;
+  --color-approve-deep: #248a3d;
+
+  --font-display: "SF Pro Display", "SF Pro Icons", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans: "SF Pro Text", "SF Pro Icons", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "SF Mono", ui-monospace, "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
+
+  --ease-apple: cubic-bezier(0.28, 0, 0.22, 1);
+}
+
+* {
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Skip link */
+.skip-link:focus {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 9999;
+  padding: 8px 16px;
+  background: #ffffff;
+  color: #000000;
+  border-radius: 9999px;
+  font-weight: 600;
+}
+
+/* Ambient glow on the black hero chapter — 单一蓝色，低亮度 */
+.hero-glow {
+  background: radial-gradient(circle at 50% 15%, rgba(41, 151, 255, 0.10) 0%, rgba(41, 151, 255, 0.04) 35%, transparent 65%);
+}
+
+.terminal-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.terminal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+}
+
+/* 打字机光标：跟随正在输入的输出行 */
+@keyframes caretBlink {
+  50% { opacity: 0; }
+}
+.terminal-caret {
+  display: inline-block;
+  width: 7px;
+  height: 13px;
+  margin-left: 2px;
+  vertical-align: -2px;
+  background: var(--color-approve);
+  animation: caretBlink 0.8s steps(2, start) infinite;
+}
+
+/* 视口高度不足时等比收缩 hero 设备场景，避免上下裁切（zoom 触发重排，
+   与 transform:scale 不同，会真实减小占位尺寸） */
+@media (min-width: 1024px) and (max-height: 870px) {
+  .hero-scene-zoom { zoom: 0.88; }
+}
+@media (min-width: 1024px) and (max-height: 800px) {
+  .hero-scene-zoom { zoom: 0.78; }
+}
+@media (max-width: 1023px) and (max-height: 720px) {
+  .hero-scene-zoom { zoom: 0.78; }
+  .hero-microline { display: none; }
+}
+
+/* Biometric pulse wave */
+@keyframes bioPulse {
+  0% { transform: scale(0.96); opacity: 0.8; }
+  50% { transform: scale(1.16); opacity: 0.3; }
+  100% { transform: scale(0.96); opacity: 0.8; }
+}
+.bio-pulse {
+  animation: bioPulse 2s infinite ease-in-out;
+}
+
+/* Hero 设备焦点：active 在前全亮，另一台压暗退后；桌面端才生效
+   （移动端终端列隐藏，只剩手机一台可见，不压暗） */
+.device-focus {
+  transition: filter 0.6s var(--ease-apple),
+              margin-left 0.7s var(--ease-apple);
+}
+@media (min-width: 1024px) {
+  .device-dim {
+    filter: brightness(0.42) saturate(0.7);
+  }
+}
+
+/* Stage transition smoothing */
+.stage-transition {
+  transition: transform 0.7s var(--ease-apple),
+              opacity 0.7s var(--ease-apple),
+              max-height 0.7s var(--ease-apple),
+              margin-top 0.7s var(--ease-apple),
+              border-color 0.7s var(--ease-apple),
+              background-color 0.7s var(--ease-apple);
+  will-change: transform, opacity;
+}
+
+/* iPhone 17 Pro hardware (thin bezel, Dynamic Island, camera control) */
+.iphone-case {
+  box-shadow:
+    0 0 0 1px #48484c,
+    0 0 0 3.5px #18181b,
+    0 30px 70px -15px rgba(0, 0, 0, 0.95),
+    0 12px 30px -6px rgba(0, 0, 0, 0.85);
+}
+.iphone-button-action {
+  position: absolute; left: -5.5px; top: 76px; width: 3px; height: 22px;
+  background: #2e2e32; border-radius: 2px 0 0 2px;
+}
+.iphone-button-vol-up {
+  position: absolute; left: -5.5px; top: 114px; width: 3px; height: 46px;
+  background: #2e2e32; border-radius: 2px 0 0 2px;
+}
+.iphone-button-vol-down {
+  position: absolute; left: -5.5px; top: 172px; width: 3px; height: 46px;
+  background: #2e2e32; border-radius: 2px 0 0 2px;
+}
+.iphone-button-power {
+  position: absolute; right: -5.5px; top: 132px; width: 3px; height: 68px;
+  background: #2e2e32; border-radius: 0 2px 2px 0;
+}
+.iphone-button-camctl {
+  position: absolute; right: -4.5px; top: 216px; width: 2.5px; height: 34px;
+  background: #3a3a3e; border-radius: 0 2px 2px 0;
+}
+
+/* Screen asleep vs awake */
+.screen-asleep {
+  background: #000000 !important;
+}
+.screen-asleep .screen-content {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+.screen-awake {
+  background:
+    radial-gradient(130% 90% at 50% -12%, rgba(64, 90, 200, 0.5) 0%, rgba(30, 40, 90, 0.22) 42%, transparent 68%),
+    linear-gradient(180deg, #0a0d18 0%, #050508 100%) !important;
+  transition: background 0.6s var(--ease-apple);
+}
+.screen-awake .screen-content {
+  opacity: 1;
+  transition: opacity 0.5s var(--ease-apple);
+}
