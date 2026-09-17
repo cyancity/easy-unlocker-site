@@ -125,7 +125,7 @@ export default function Hero() {
                 密钥留在指尖<span className="hidden font-normal text-neutral-600 sm:inline"> · </span><span className="block text-neutral-300 sm:inline">绝不落进对话与日志</span>
               </h1>
               <p className="mx-auto mb-4 max-w-2xl text-xs font-normal leading-relaxed text-neutral-400 sm:text-sm">
-                当智能体执行部署或敏感调用时拦截密钥需求，向你的手机推送生物核验 —— 在手机上一按即批，瞬时公钥密封、内存直接注入，终端历史与云端中继永不留痕。
+                当智能体执行部署或敏感调用时拦截密钥需求，把审批推到另一台物理设备——你的手机。指纹一按即批，瞬时公钥密封、内存直接注入，终端历史与云端中继永不留痕；Agent 跑在本机、服务器还是 CI，流程都一样。
               </p>
 
               {/* 动作行：安装命令 pill + 主 CTA + GitHub 次级入口 */}
