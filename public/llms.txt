@@ -1,0 +1,17 @@
+# easy-unlocker
+
+> Approval gate for AI agents. When an agent needs an API key, SSH credential or any secret, the easyGet CLI generates a one-time keypair, the phone approves with biometrics, and the end-to-end sealed value goes straight into the target process — plaintext never enters the chat, logs, or the relay broker.
+
+> 把手机变成 Agent 的审批台：Agent 要密钥不用贴进对话，指纹一按，端到端密文直接送进目标进程，中转服务器从头到尾只见密文。
+
+## Install
+
+- easyGet CLI (macOS / Linux / Windows): `curl -fsSL https://easy-unlocker.pages.dev/install.sh | sh`
+- Android APK / iOS source / self-hosted broker: <https://github.com/cyancity/easy-unlocker/releases/latest>
+
+## Docs
+
+- [README](https://github.com/cyancity/easy-unlocker): what it is, install, the three request modes
+- [AGENTS-SETUP](https://github.com/cyancity/easy-unlocker/blob/main/docs/AGENTS-SETUP.md): full setup/build/release guide written for coding agents
+- [PROTOCOL](https://github.com/cyancity/easy-unlocker/blob/main/docs/PROTOCOL.md): HTTP API, sealing format, tenant model
+- [SECURITY](https://github.com/cyancity/easy-unlocker/blob/main/SECURITY.md): threat model — the broker only ever sees ciphertext
